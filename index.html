@@ -3,113 +3,885 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Wedding - Minimalist</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
+    <title>Khang & Vy Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
-        .serif { font-family: 'Playfair Display', serif; }
-        .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9em;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #a89968;
+        }
+
+        /* Sections */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        /* === LANDING / HERO === */
+        #landing {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f3f0 0%, #fff9f6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #landing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23e8dcd0" stroke-width="0.5" opacity="0.3"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+        }
+
+        .hero-content .ampersand {
+            color: #a89968;
+            font-style: italic;
+        }
+
+        .hero-date {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero-quote {
+            font-size: 1.2em;
+            color: #a89968;
+            font-style: italic;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* === OUR STORY === */
+        #story {
+            padding: 100px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+        }
+
+        #story h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 80px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #e0d5c7;
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: 50%;
+            text-align: right;
+            padding-right: 40px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 50%;
+            margin-right: 0;
+            text-align: left;
+            padding-left: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: #a89968;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 0 0 3px #e0d5c7;
+        }
+
+        .timeline-year {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #a89968;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .timeline-description {
+            font-size: 0.95em;
+            color: #666;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 60px;
+                margin-right: 0;
+                text-align: left;
+                padding-left: 30px;
+                padding-right: 0;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        /* === THE EVENT === */
+        #event {
+            padding: 100px 40px;
+            background-color: #f5f3f0;
+        }
+
+        .event-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        #event h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 80px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .event-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .detail-box {
+            text-align: center;
+        }
+
+        .detail-box h3 {
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .detail-box p {
+            font-size: 1.3em;
+            color: #1a1a1a;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .map-button {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 2px solid #a89968;
+            background: transparent;
+            color: #a89968;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .map-button:hover {
+            background: #a89968;
+            color: #fff;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        /* Dresscode */
+        .dresscode {
+            margin-top: 80px;
+            padding-top: 80px;
+            border-top: 1px solid #e0d5c7;
+            text-align: center;
+        }
+
+        .dresscode h3 {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .dresscode-colors {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .color-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .color-swatch {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e0d5c7;
+        }
+
+        .color-name {
+            font-size: 0.95em;
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* === GALLERY === */
+        #gallery {
+            padding: 100px 40px;
+            background-color: #fff;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #gallery h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 80px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            grid-auto-rows: 300px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #f5f3f0;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* === RSVP === */
+        #rsvp {
+            padding: 100px 40px;
+            background-color: #f5f3f0;
+        }
+
+        .rsvp-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #rsvp h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e0d5c7;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            color: #333;
+            background: #fff;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #a89968;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #a89968;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #8b7954;
+        }
+
+        /* === THANK YOU MODAL === */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: #fff;
+            margin: 50% auto;
+            padding: 60px 40px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 500px;
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-content h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #a89968;
+        }
+
+        .modal-content p {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .close-btn {
+            padding: 12px 30px;
+            background: #a89968;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        .close-btn:hover {
+            background: #8b7954;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav .nav-container {
+                padding: 0 20px;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content .ampersand {
+                display: block;
+            }
+
+            #story, #event, #gallery, #rsvp {
+                padding: 60px 20px;
+            }
+
+            #story h2, #event h2, #gallery h2, #rsvp h2 {
+                font-size: 1.8em;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                grid-auto-rows: 200px;
+            }
+
+            .modal-content {
+                margin: 40% auto;
+                padding: 40px 20px;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#landing">Home</a>
+            <a href="#story">Our Story</a>
+            <a href="#event">The Event</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#rsvp">RSVP</a>
+        </div>
+    </nav>
 
-    <section class="h-screen flex flex-col items-center justify-center text-center hero-bg text-white px-4">
-        <h1 class="serif text-5xl md:text-7xl mb-4">Khang & Vy</h1>
-        <p class="uppercase tracking-[0.5em] text-sm md:text-base">Chúng mình sắp cưới</p>
-        <div class="mt-8 border-t border-white w-16"></div>
-        <p class="mt-4 serif italic text-xl">06 . 06 . 2026</p>
-        <a href="#rsvp" class="mt-12 px-8 py-3 border border-white hover:bg-white hover:text-black transition duration-300 text-sm tracking-widest">RSVP</a>
+    <!-- Landing / Hero -->
+    <section id="landing">
+        <div class="hero-content">
+            <h1>Khang <span class="ampersand">&</span> Vy</h1>
+            <div class="hero-date">06.06.2026 & 14.06.2026</div>
+            <div class="hero-quote">"Two souls with but a single thought, two hearts that beat as one."</div>
+        </div>
+        <div class="scroll-indicator">↓</div>
     </section>
 
-    <section class="py-20 px-6 max-w-4xl mx-auto text-center">
-        <h2 class="serif text-3xl mb-12">Hành trình của chúng mình</h2>
-        <div class="space-y-12">
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="w-full md:w-1/2 text-right hidden md:block">
-                    <span class="text-gray-400">2023</span>
-                </div>
-                <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
-                <div class="w-full md:w-1/2 text-left">
-                    <p class="font-semibold md:hidden text-gray-400">2023</p>
-                    <p>Gặp gỡ tại một quán bánh.</p>
+    <!-- Our Story -->
+    <section id="story">
+        <h2>Our Story</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-title">Ngày Gặp Gỡ</div>
+                    <div class="timeline-description">Chúng tôi gặp nhau tại một sự kiện đặc biệt và cảm thấy một kết nối ngay lập tức.</div>
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="w-full md:w-1/2 text-right order-2 md:order-1">
-                    <p class="font-semibold md:hidden text-gray-400">2025</p>
-                    <p>Lời cầu hôn bất ngờ trên sông Nho Quế</p>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-title">Một Lời Cầu Hôn</div>
+                    <div class="timeline-description">Sau những năm tháng đẹp bên nhau, anh quy xuống gối và đặt chiếc nhẫn lên ngón tay em.</div>
                 </div>
-                <div class="w-2 h-2 bg-gray-300 rounded-full order-1 md:order-2"></div>
-                <div class="w-full md:w-1/2 text-left hidden md:block order-3">
-                    <span class="text-gray-400">2025</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-title">Ngày Trọng Đại</div>
+                    <div class="timeline-description">Chúng tôi hân hạnh chia sẻ niềm vui này cùng những người yêu thương nhất.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-white py-20 px-6 text-center">
-        <h2 class="serif text-3xl mb-8">Lễ Cưới</h2>
-        <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            <div class="space-y-4">
-                <h3 class="uppercase tracking-widest font-semibold text-sm">Thời gian & Địa điểm</h3>
-                <p>10:30 — Đón khách<br>11:30 — Khai tiệc</p>
-                <p class="italic">Nam Phước, Đà Nẵng</p>
-                <button class="mt-4 text-xs border-b border-black pb-1 hover:text-gray-500 transition">XEM BẢN ĐỒ</button>
+    <!-- The Event -->
+    <section id="event">
+        <div class="event-container">
+            <h2>The Event</h2>
+
+            <!-- Tiệc Vũ Quy -->
+            <div style="margin-bottom: 80px;">
+                <h3 style="text-align: center; font-size: 1.5em; margin-bottom: 40px; font-weight: 600;">Tiệc Vũ Quy</h3>
+                <div class="event-details">
+                    <div class="detail-box">
+                        <h3>Ngày Giờ</h3>
+                        <p>06 Tháng 6, 2026</p>
+                        <p style="font-size: 1em;">10:30 AM</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Địa Điểm</h3>
+                        <p>Nhà Hàng Phúc Khang</p>
+                        <p style="font-size: 1em;">Nam Phước, Đà Nẵng</p>
+                        <button class="map-button" onclick="window.open('https://maps.google.com/?q=Nhà+Hàng+Phúc+Khang+Nam+Phước+Đà+Nẵng', '_blank')">Mở Maps</button>
+                    </div>
+                </div>
             </div>
-            <div class="space-y-4">
-                <h3 class="uppercase tracking-widest font-semibold text-sm">Dresscode</h3>
-                <p class="text-sm text-gray-500 mb-4">Để có những khung hình đẹp nhất, mong bạn chọn trang phục theo tông màu:</p>
-                <div class="flex justify-center gap-4">
-                    <div class="w-10 h-10 rounded-full bg-[#E5D3B3] shadow-inner" title="Beige"></div>
-                    <div class="w-10 h-10 rounded-full bg-[#FFFFFF] border border-gray-200 shadow-inner" title="White"></div>
-                    <div class="w-10 h-10 rounded-full bg-[#4A5D4E] shadow-inner" title="Sage Green"></div>
+
+            <!-- Tiệc Tân Hôn -->
+            <div style="border-top: 1px solid #e0d5c7; padding-top: 80px; margin-bottom: 80px;">
+                <h3 style="text-align: center; font-size: 1.5em; margin-bottom: 40px; font-weight: 600;">Tiệc Tân Hôn</h3>
+                <div class="event-details">
+                    <div class="detail-box">
+                        <h3>Ngày Giờ</h3>
+                        <p>14 Tháng 6, 2026</p>
+                        <p style="font-size: 1em;">10:30 AM</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Địa Điểm</h3>
+                        <p>Khách sạn Đông Xuyên</p>
+                        <p style="font-size: 1em;">Long Xuyên, An Giang</p>
+                        <button class="map-button" onclick="window.open('https://maps.google.com/?q=Khách+sạn+Đông+Xuyên+Long+Xuyên+An+Giang', '_blank')">Mở Maps</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tiệc Báo Hỷ -->
+            <div style="border-top: 1px solid #e0d5c7; padding-top: 80px;">
+                <h3 style="text-align: center; font-size: 1.5em; margin-bottom: 40px; font-weight: 600;">Tiệc Báo Hỷ</h3>
+                <div class="event-details">
+                    <div class="detail-box">
+                        <h3>Ngày Giờ</h3>
+                        <p style="color: #ffc107; font-weight: 600;">Đang Cập Nhật</p>
+                        <span class="coming-soon-badge">⏳ SẮP THÔNG BÁO</span>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Địa Điểm</h3>
+                        <p style="color: #ffc107; font-weight: 600;">Đang Cập Nhật</p>
+                        <span class="coming-soon-badge">⏳ SẮP THÔNG BÁO</span>
+                    </div>
+                </div>
+                <p style="text-align: center; color: #666; margin-top: 40px; font-size: 1em;">Chúng tôi sẽ thông báo thông tin chi tiết về Tiệc Báo Hỷ sớm nhất. Cảm ơn sự chú ý của bạn!</p>
+            </div>
+
+            <!-- Dresscode -->
+            <div class="dresscode">
+                <h3>Dresscode</h3>
+                <div class="dresscode-colors">
+                    <div class="color-box">
+                        <div class="color-swatch" style="background: #F5E6D3;"></div>
+                        <span class="color-name">Beige</span>
+                    </div>
+                    <div class="color-box">
+                        <div class="color-swatch" style="background: #FFFFFF; border: 2px solid #d0d0d0;"></div>
+                        <span class="color-name">White</span>
+                    </div>
+                    <div class="color-box">
+                        <div class="color-swatch" style="background: #1A1A1A;"></div>
+                        <span class="color-name">Black</span>
+                    </div>
+                    <div class="color-box">
+                        <div class="color-swatch" style="background: #A89968;"></div>
+                        <span class="color-name">Gold</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 px-4">
-        <h2 class="serif text-3xl text-center mb-12">Khoảnh khắc</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
-            <div class="aspect-[3/4] bg-gray-200 overflow-hidden"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover hover:scale-105 transition duration-500"></div>
-            <div class="aspect-[3/4] bg-gray-200 overflow-hidden"><img src="https://images.unsplash.com/photo-1519225495810-758b63300051?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover hover:scale-105 transition duration-500"></div>
-            <div class="aspect-[3/4] bg-gray-200 overflow-hidden"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover hover:scale-105 transition duration-500"></div>
+    <!-- Gallery -->
+    <section id="gallery">
+        <div class="gallery-container">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&h=500&fit=crop" alt="Gallery 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1469927160940-53e76319884d?w=500&h=500&fit=crop" alt="Gallery 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=500&h=500&fit=crop" alt="Gallery 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178f50002c4b?w=500&h=500&fit=crop" alt="Gallery 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519672773075-52fdf829b739?w=500&h=500&fit=crop" alt="Gallery 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1465146072230-91cabc968266?w=500&h=500&fit=crop" alt="Gallery 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1520763185298-1b434c919eba?w=500&h=500&fit=crop" alt="Gallery 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1499209974033-f6bb0487c77f?w=500&h=500&fit=crop" alt="Gallery 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516680714707-74ed67e55b8a?w=500&h=500&fit=crop" alt="Gallery 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1566236849664-00b9f616e81e?w=500&h=500&fit=crop" alt="Gallery 10">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=500&h=500&fit=crop" alt="Gallery 11">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=500&h=500&fit=crop" alt="Gallery 12">
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="rsvp" class="bg-gray-100 py-20 px-6">
-        <div class="max-w-xl mx-auto bg-white p-10 shadow-sm">
-            <h2 class="serif text-3xl text-center mb-8">Xác nhận tham dự</h2>
-            <form class="space-y-6">
-                <div>
-                    <label class="block text-xs uppercase tracking-widest mb-2">Tên của bạn</label>
-                    <input type="text" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-black transition">
+    <!-- RSVP -->
+    <section id="rsvp">
+        <div class="rsvp-container">
+            <h2>RSVP</h2>
+            <form id="rsvpForm">
+                <div class="form-group">
+                    <label for="name">Tên của bạn *</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-widest mb-2">Số người tham dự</label>
-                    <select class="w-full border-b border-gray-300 py-2 bg-transparent focus:outline-none focus:border-black transition">
-                        <option>1 người</option>
-                        <option>2 người</option>
-                        <option>Đi cùng gia đình</option>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="guests">Số người tham dự *</label>
+                    <select id="guests" name="guests" required>
+                        <option value="">-- Chọn --</option>
+                        <option value="1">1 người</option>
+                        <option value="2">2 người</option>
+                        <option value="3">3 người</option>
+                        <option value="4">4 người</option>
+                        <option value="5">5 người trở lên</option>
                     </select>
                 </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-widest mb-2">Lời nhắn cho chúng mình</label>
-                    <textarea class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-black transition" rows="2"></textarea>
+
+                <div class="form-group">
+                    <label for="diet">Yêu cầu ăn uống *</label>
+                    <select id="diet" name="diet" required>
+                        <option value="">-- Chọn --</option>
+                        <option value="regular">Ăn mặn thường</option>
+                        <option value="vegetarian">Ăn chay</option>
+                        <option value="both">Cả hai</option>
+                    </select>
                 </div>
-                <button type="submit" class="w-full bg-black text-white py-4 text-sm tracking-[0.3em] hover:bg-gray-800 transition uppercase">Gửi xác nhận</button>
+
+                <div class="form-group">
+                    <label for="message">Lời chúc (tuỳ chọn)</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Gửi RSVP</button>
             </form>
         </div>
     </section>
 
-    <footer class="py-10 text-center text-gray-400 text-xs tracking-widest uppercase">
-        <p>Khang & Vy — 06.06.2026</p>
+    <!-- Thank You Modal -->
+    <div id="thankYouModal" class="modal">
+        <div class="modal-content">
+            <h2>Cảm ơn bạn! 💕</h2>
+            <p>Chúng tôi đã nhận được RSVP của bạn. Rất hân hạnh được gặp bạn trong ngày trọng đại của chúng tôi!</p>
+            <button class="close-btn" onclick="closeModal()">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Khang & Vy. All rights reserved.</p>
+        <p>Với tình yêu và sự kính trọng</p>
     </footer>
 
+    <script>
+        // RSVP Form Submission
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('thankYouModal').style.display = 'block';
+            // Reset form
+            this.reset();
+        });
+
+        function closeModal() {
+            document.getElementById('thankYouModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('thankYouModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>
