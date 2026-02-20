@@ -1,7 +1,115 @@
 <!DOCTYPE html>
-<html>
-<body>
-    <h1>Chào mừng đến với trang web của tôi!</h1>
-    <p>Tôi vừa tạo trang này bằng GitHub Pages.</p>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Wedding - Minimalist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <section class="h-screen flex flex-col items-center justify-center text-center hero-bg text-white px-4">
+        <h1 class="serif text-5xl md:text-7xl mb-4">Minh & Phương</h1>
+        <p class="uppercase tracking-[0.5em] text-sm md:text-base">Chúng mình sắp cưới</p>
+        <div class="mt-8 border-t border-white w-16"></div>
+        <p class="mt-4 serif italic text-xl">20 . 02 . 2026</p>
+        <a href="#rsvp" class="mt-12 px-8 py-3 border border-white hover:bg-white hover:text-black transition duration-300 text-sm tracking-widest">RSVP</a>
+    </section>
+
+    <section class="py-20 px-6 max-w-4xl mx-auto text-center">
+        <h2 class="serif text-3xl mb-12">Hành trình của chúng mình</h2>
+        <div class="space-y-12">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="w-full md:w-1/2 text-right hidden md:block">
+                    <span class="text-gray-400">2020</span>
+                </div>
+                <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                <div class="w-full md:w-1/2 text-left">
+                    <p class="font-semibold md:hidden text-gray-400">2020</p>
+                    <p>Lần đầu gặp gỡ tại một quán cà phê nhỏ vào chiều mưa.</p>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="w-full md:w-1/2 text-right order-2 md:order-1">
+                    <p class="font-semibold md:hidden text-gray-400">2025</p>
+                    <p>Lời cầu hôn bất ngờ trên đỉnh núi Langbiang.</p>
+                </div>
+                <div class="w-2 h-2 bg-gray-300 rounded-full order-1 md:order-2"></div>
+                <div class="w-full md:w-1/2 text-left hidden md:block order-3">
+                    <span class="text-gray-400">2025</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-20 px-6 text-center">
+        <h2 class="serif text-3xl mb-8">Lễ Cưới</h2>
+        <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            <div class="space-y-4">
+                <h3 class="uppercase tracking-widest font-semibold text-sm">Thời gian & Địa điểm</h3>
+                <p>17:30 — Đón khách<br>19:00 — Khai tiệc</p>
+                <p class="italic">GEM Center, Quận 1, TP. HCM</p>
+                <button class="mt-4 text-xs border-b border-black pb-1 hover:text-gray-500 transition">XEM BẢN ĐỒ</button>
+            </div>
+            <div class="space-y-4">
+                <h3 class="uppercase tracking-widest font-semibold text-sm">Dresscode</h3>
+                <p class="text-sm text-gray-500 mb-4">Để có những khung hình đẹp nhất, mong bạn chọn trang phục theo tông màu:</p>
+                <div class="flex justify-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-[#E5D3B3] shadow-inner" title="Beige"></div>
+                    <div class="w-10 h-10 rounded-full bg-[#FFFFFF] border border-gray-200 shadow-inner" title="White"></div>
+                    <div class="w-10 h-10 rounded-full bg-[#4A5D4E] shadow-inner" title="Sage Green"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4">
+        <h2 class="serif text-3xl text-center mb-12">Khoảnh khắc</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+            <div class="aspect-[3/4] bg-gray-200 overflow-hidden"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover hover:scale-105 transition duration-500"></div>
+            <div class="aspect-[3/4] bg-gray-200 overflow-hidden"><img src="https://images.unsplash.com/photo-1519225495810-758b63300051?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover hover:scale-105 transition duration-500"></div>
+            <div class="aspect-[3/4] bg-gray-200 overflow-hidden"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover hover:scale-105 transition duration-500"></div>
+        </div>
+    </section>
+
+    <section id="rsvp" class="bg-gray-100 py-20 px-6">
+        <div class="max-w-xl mx-auto bg-white p-10 shadow-sm">
+            <h2 class="serif text-3xl text-center mb-8">Xác nhận tham dự</h2>
+            <form class="space-y-6">
+                <div>
+                    <label class="block text-xs uppercase tracking-widest mb-2">Tên của bạn</label>
+                    <input type="text" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-black transition">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-widest mb-2">Số người tham dự</label>
+                    <select class="w-full border-b border-gray-300 py-2 bg-transparent focus:outline-none focus:border-black transition">
+                        <option>1 người</option>
+                        <option>2 người</option>
+                        <option>Đi cùng gia đình</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-widest mb-2">Lời nhắn cho chúng mình</label>
+                    <textarea class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-black transition" rows="2"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-black text-white py-4 text-sm tracking-[0.3em] hover:bg-gray-800 transition uppercase">Gửi xác nhận</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-gray-400 text-xs tracking-widest uppercase">
+        <p>Minh & Phương — 20.02.2026</p>
+    </footer>
+
 </body>
 </html>
