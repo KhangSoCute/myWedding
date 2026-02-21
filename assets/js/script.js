@@ -1,38 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const rsvpForm = document.getElementById('rsvpForm');
+    const form = document.getElementById('weddingForm');
 
-    if (rsvpForm) {
-        rsvpForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Lấy dữ liệu từ form
-            const name = document.getElementById('name').value;
-            const guests = document.getElementById('guests').value;
-            const message = document.getElementById('message').value;
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const data = {
+            name: document.getElementById('name').value,
+            event: document.getElementById('eventChoice').value,
+            message: document.getElementById('message').value
+        };
 
-            // Log ra console để kiểm tra (Sau này có thể kết nối API Google Sheets tại đây)
-            console.log("RSVP Received:", { name, guests, message });
+        console.log("Dữ liệu RSVP:", data);
+        
+        // Hiệu ứng nút bấm khi gửi thành công
+        const btn = form.querySelector('button');
+        const originalText = btn.innerText;
+        btn.innerText = "ĐÃ GỬI XÁC NHẬN ✓";
+        btn.classList.add('bg-green-800');
 
-            // Hiệu ứng phản hồi cho khách
-            alert(`Cảm ơn ${name} đã xác nhận tham dự đám cưới của Khang & Vy!`);
-            rsvpForm.reset();
-        });
-    }
-
-    // Hiệu ứng xuất hiện khi cuộn trang (Scroll Reveal) đơn giản
-    const observerOptions = {
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
+        setTimeout(() => {
+            alert(`Cảm ơn ${data.name} đã xác nhận tham dự!`);
+            form.reset();
+            btn.innerText = originalText;
+            btn.classList.remove('bg-green-800');
+        }, 1000);
     });
 });
