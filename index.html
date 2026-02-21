@@ -1,38 +1,98 @@
-<section class="bg-white py-24 px-6 border-y border-gray-100">
-    <div class="max-w-5xl mx-auto">
-        <h2 class="serif text-4xl text-center mb-16 italic text-gray-400">— Sự Kiện Cưới —</h2>
-        
-        <div class="grid md:grid-cols-3 gap-12 text-center">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Khang & Vy - Wedding Invitation</title>
+    <meta name="description" content="Trân trọng kính mời bạn đến dự lễ cưới của Khang và Vy vào tháng 06/2026.">
+    <meta property="og:title" content="Khang & Vy - Wedding Invitation">
+    <meta property="og:image" content="assets/images/thumbnail.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#fafafa] text-gray-800">
+
+    <section class="h-screen flex flex-col items-center justify-center text-center hero-bg text-white px-4">
+        <div class="fade-in">
+            <h1 class="serif text-6xl md:text-8xl mb-4">Khang & Vy</h1>
+            <p class="uppercase tracking-[0.6em] text-xs md:text-sm">Save Our Dates</p>
+            <div class="mt-8 border-t border-white/50 w-24 mx-auto"></div>
+            <p class="mt-6 serif italic text-xl md:text-2xl opacity-90">Tháng 06 . 2026</p>
+            <a href="#rsvp" class="mt-12 inline-block px-10 py-3 border border-white hover:bg-white hover:text-black transition duration-500 text-xs tracking-[0.3em]">XÁC NHẬN THAM DỰ</a>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 border-y border-gray-100 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="serif text-4xl text-center mb-16 italic text-gray-400">— Lịch Trình Sự Kiện —</h2>
             
-            <div class="space-y-4 p-6 border border-gray-50 hover:shadow-sm transition">
-                <h3 class="serif text-2xl">Tiệc Vu Quy</h3>
-                <p class="font-semibold text-amber-700">06 . 06 . 2026</p>
-                <p class="text-sm text-gray-600">Nam Phước, Duy Xuyên<br>Đà Nẵng</p>
-                <a href="https://maps.google.com/?q=Nam+Phước+Duy+Xuyên+Đà+Nẵng" target="_blank" class="inline-block mt-2 text-[10px] border-b border-black pb-1 uppercase tracking-widest">Bản đồ</a>
-            </div>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="event-card p-8 border border-gray-100 rounded-sm space-y-4">
+                    <h3 class="serif text-2xl">Tiệc Vu Quy</h3>
+                    <p class="font-semibold text-amber-800">06 . 06 . 2026</p>
+                    <p class="text-sm text-gray-500 leading-relaxed">Nam Phước, Duy Xuyên<br>Đà Nẵng</p>
+                    <a href="#" class="inline-block text-[10px] border-b border-black pb-1 uppercase tracking-widest mt-4">Xem bản đồ</a>
+                </div>
 
-            <div class="space-y-4 p-6 border border-gray-50 shadow-md transform scale-105 bg-white">
-                <h3 class="serif text-2xl">Tiệc Tân Hôn</h3>
-                <p class="font-semibold text-amber-700">14 . 06 . 2026</p>
-                <p class="text-sm text-gray-600">Long Xuyên<br>An Giang</p>
-                <a href="https://maps.google.com/?q=Long+Xuyên+An+Giang" target="_blank" class="inline-block mt-2 text-[10px] border-b border-black pb-1 uppercase tracking-widest">Bản đồ</a>
-            </div>
+                <div class="event-card p-8 border border-gray-100 rounded-sm space-y-4 bg-gray-50 md:scale-105 shadow-sm">
+                    <h3 class="serif text-2xl">Tiệc Tân Hôn</h3>
+                    <p class="font-semibold text-amber-800">14 . 06 . 2026</p>
+                    <p class="text-sm text-gray-500 leading-relaxed">Thành phố Long Xuyên<br>An Giang</p>
+                    <a href="#" class="inline-block text-[10px] border-b border-black pb-1 uppercase tracking-widest mt-4">Xem bản đồ</a>
+                </div>
 
-            <div class="space-y-4 p-6 border border-gray-50 opacity-80">
-                <h3 class="serif text-2xl text-gray-400">Tiệc Báo Hỷ</h3>
-                <p class="font-semibold text-gray-400 italic text-sm italic">Sẽ thông báo sau</p>
-                <p class="text-sm text-gray-400">TP. Hồ Chí Minh</p>
+                <div class="event-card p-8 border border-gray-100 rounded-sm space-y-4 opacity-60">
+                    <h3 class="serif text-2xl">Tiệc Báo Hỷ</h3>
+                    <p class="text-xs italic text-gray-400">Sẽ thông báo sau</p>
+                    <p class="text-sm text-gray-500 leading-relaxed">TP. Hồ Chí Minh</p>
+                </div>
             </div>
-
         </div>
+    </section>
 
-        <div class="mt-20 text-center">
-             <h3 class="serif text-xl mb-6 italic text-gray-400">Dresscode</h3>
-             <div class="flex justify-center gap-6">
-                <div class="w-10 h-10 rounded-full bg-[#E5D3B3]" title="Beige"></div>
-                <div class="w-10 h-10 rounded-full bg-white border border-gray-200" title="White"></div>
-                <div class="w-10 h-10 rounded-full bg-[#4A5D4E]" title="Sage"></div>
-             </div>
+    <section class="py-24 px-4 max-w-6xl mx-auto text-center">
+        <h2 class="serif text-3xl mb-16 italic text-gray-400">— Khoảnh Khắc —</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <div class="aspect-[3/4] overflow-hidden bg-gray-100"><img src="assets/images/photo1.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="aspect-[3/4] overflow-hidden bg-gray-100"><img src="assets/images/photo2.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="aspect-[3/4] overflow-hidden bg-gray-100"><img src="assets/images/photo3.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="aspect-[3/4] overflow-hidden bg-gray-100"><img src="assets/images/photo4.jpg" class="gallery-img w-full h-full object-cover"></div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section id="rsvp" class="py-24 px-6 bg-[#f7f7f7]">
+        <div class="max-w-xl mx-auto bg-white p-12 shadow-sm text-center">
+            <h2 class="serif text-4xl mb-8 uppercase tracking-widest">RSVP</h2>
+            <form id="weddingForm" class="text-left space-y-8">
+                <div>
+                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Tên của bạn</label>
+                    <input type="text" id="name" required class="w-full border-b border-gray-200 py-3 focus:outline-none focus:border-black transition text-sm">
+                </div>
+                <div>
+                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Buổi tiệc bạn tham dự</label>
+                    <select id="eventChoice" class="w-full border-b border-gray-200 py-3 bg-transparent focus:outline-none focus:border-black transition text-sm">
+                        <option value="Đà Nẵng">Tiệc Vu Quy (Đà Nẵng - 06/06)</option>
+                        <option value="An Giang">Tiệc Tân Hôn (An Giang - 14/06)</option>
+                        <option value="Cả hai">Tham dự cả hai tiệc</option>
+                        <option value="Chưa xác định">Sẽ báo sau</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Lời nhắn</label>
+                    <textarea id="message" class="w-full border-b border-gray-200 py-3 focus:outline-none focus:border-black transition text-sm" rows="2"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-black text-white py-4 text-[10px] tracking-[0.4em] uppercase hover:opacity-80 transition">Gửi thông tin</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center text-[10px] tracking-[0.4em] text-gray-400 uppercase">
+        Khang & Vy — 2026
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
