@@ -105,12 +105,15 @@
     
             // 2. Chuyển đổi dữ liệu Form thành định dạng URL encoded (tương thích tốt nhất với Google Script)
             const formData = new FormData(form);
-            const params = new URLSearchParams(formData);
-    
-            // 3. Thực hiện lệnh FETCH (Dán vào đây)
+            // Ép dữ liệu về dạng URLSearchParams
+            const params = new URLSearchParams();
+            for (const pair of formData) {
+                params.append(pair[0].toLowerCase(), pair[1]); // Ép key về chữ thường cho chắc chắn
+            }
+            
             fetch(scriptURL, { 
                 method: 'POST', 
-                mode: 'no-cors', // Rất quan trọng để tránh lỗi bảo mật (CORS)
+                mode: 'no-cors', 
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
