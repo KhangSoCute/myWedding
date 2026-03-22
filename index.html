@@ -90,32 +90,45 @@
     </section>
     
     <script>
-        // THAY BẰNG URL BẠN LẤY TỪ APPS SCRIPT Ở BƯỚC 2
-        const scriptURL = https://script.google.com/macros/s/AKfycbxeUAWTL8DR_aYYtWckXWGyztk5JGZDv9XVoHPHwyRgn424hR-3IK3Z4TUrfbeGhio/exec; 
-        const form = document.forms['weddingForm'];
-        const btn = document.getElementById('submitBtn');
+        // 1. Thay URL Web App của bạn vào đây
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxeUAWTL8DR_aYYtWckXWGyztk5JGZDv9XVoHPHwyRgn424hR-3IK3Z4TUrfbeGhio/exec'; 
+        const form = document.getElementById('weddingForm');
+        const btn = document.querySelector('#weddingForm button[type="submit"]');
     
         form.addEventListener('submit', e => {
-            e.preventDefault();
-            
-            // Đổi text nút thành "Đang gửi..." để khách biết hệ thống đang xử lý
+            e.preventDefault(); // Ngăn trang web tải lại khi nhấn gửi
+    
+            // Hiển thị trạng thái đang gửi trên nút
             const originalBtnText = btn.innerText;
             btn.innerText = 'ĐANG GỬI...';
             btn.disabled = true;
     
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
-                    alert("Cảm ơn bạn! Thông tin đã được gửi thành công.");
-                    form.reset(); // Xóa trắng form sau khi gửi
-                    btn.innerText = originalBtnText;
-                    btn.disabled = false;
-                })
-                .catch(error => {
-                    console.error('Lỗi!', error.message);
-                    alert("Có lỗi xảy ra, vui lòng thử lại sau.");
-                    btn.innerText = originalBtnText;
-                    btn.disabled = false;
-                });
+            // 2. Chuyển đổi dữ liệu Form thành định dạng URL encoded (tương thích tốt nhất với Google Script)
+            const formData = new FormData(form);
+            const params = new URLSearchParams(formData);
+    
+            // 3. Thực hiện lệnh FETCH (Dán vào đây)
+            fetch(scriptURL, { 
+                method: 'POST', 
+                mode: 'no-cors', // Rất quan trọng để tránh lỗi bảo mật (CORS)
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: params.toString() 
+            })
+            .then(() => {
+                // Thông báo thành công
+                alert("Cảm ơn bạn! Khang và Vy đã nhận được thông tin RSVP.");
+                form.reset(); // Xóa trắng form để khách khác có thể điền
+                btn.innerText = originalBtnText;
+                btn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Lỗi!', error.message);
+                alert("Có lỗi xảy ra, vui lòng thử lại sau.");
+                btn.innerText = originalBtnText;
+                btn.disabled = false;
+            });
         });
     </script>
 
