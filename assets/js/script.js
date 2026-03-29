@@ -5,51 +5,54 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('weddingForm');
     const btn = form.querySelector('button');
 
-    // Cấu hình thông tin lịch chi tiết theo yêu cầu của Khang
+    // Cấu hình thông tin lịch (Đã cập nhật TP.HCM và địa chỉ chi tiết)
     const weddingEvents = {
         "Đà Nẵng": {
             title: "Lễ Vu Quy - Khang & Vy (Đà Nẵng)",
             start: "20260606T100000", 
             end: "20260606T140000",
-            location: "Nhà Hàng Tiệc Cưới Phúc Khang, 139 Trương Chí Cương, Nam Phước, Đà Nẵng",
+            location: "Nhà Hàng Tiệc Cưới Phúc Khang, 139 Trương Chí Cương, Nam Phước, Duy Xuyên, Quảng Nam",
             description: "Rất hân hạnh được đón tiếp bạn tại tiệc Vu Quy của chúng mình!"
         },
         "An Giang": {
             title: "Lễ Tân Hôn - Khang & Vy (An Giang)",
             start: "20260614T100000",
             end: "20260614T140000",
-            location: "Khách sạn Đông Xuyên, 9A Lương Văn Cù, Long Xuyên, An Giang",
+            location: "Khách sạn Đông Xuyên, 9A Lương Văn Cù, Mỹ Long, Long Xuyên, An Giang",
             description: "Rất hân hạnh được đón tiếp bạn tại tiệc Tân Hôn của chúng mình!"
-        }
+        },
+        // "TP.HCM": {
+        //     title: "Tiệc Báo Hỷ - Khang & Vy (TP.HCM)",
+        //     start: "20261231T180000", 
+        //     end: "20261231T210000",
+        //     location: "TP. Hồ Chí Minh (Địa điểm cụ thể sẽ thông báo sau)",
+        //     description: "Khang và Vy sẽ thông báo thời gian và địa điểm chính xác đến bạn sớm nhất!"
+        // }
     };
 
     if (form) {
         form.addEventListener('submit', e => {
             e.preventDefault();
 
-            // Lấy giá trị để hiển thị trong alert sau này
             const guestName = document.getElementById('name').value;
+            const selectedEvent = document.getElementById('eventChoice').value; // Đây là chỗ lấy Event
 
             // Hiệu ứng đang gửi
             const originalText = btn.innerText;
             btn.innerText = 'ĐANG GỬI...';
             btn.disabled = true;
 
-            // 2. Thu thập dữ liệu thủ công theo ID để đảm bảo chính xác 100%
+            // 2. Thu thập dữ liệu
             const params = new URLSearchParams();
-            params.append('name', document.getElementById('name').value);
-            params.append('event', document.getElementById('eventChoice').value);
+            params.append('name', guestName);
+            params.append('event', selectedEvent);
             params.append('message', document.getElementById('message').value);
-
-            console.log("Dữ liệu đang gửi đi:", Object.fromEntries(params));
 
             // 3. Gửi dữ liệu qua Google Sheets
             fetch(scriptURL, { 
                 method: 'POST', 
                 mode: 'no-cors', 
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: params.toString() 
             })
             .then(() => {
@@ -57,15 +60,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 btn.innerText = "ĐÃ GỬI XÁC NHẬN ✓";
                 btn.classList.add('bg-green-800');
 
+                // ĐOẠN QUAN TRỌNG NHẤT: Kích hoạt Calendar sau khi Alert
                 setTimeout(() => {
                     alert(`Cảm ơn ${guestName} đã xác nhận tham dự! Khang và Vy đã nhận được thông tin.`);
-                    form.reset();
                     
-                    // Khôi phục nút bấm
+                    // Hỏi khách có muốn thêm lịch không
+                    const confirmCalendar = confirm(`Bạn có muốn thêm lịch nhắc cho buổi tiệc tại ${selectedEvent} vào điện thoại không?`);
+                    
+                    if (confirmCalendar && weddingEvents[selectedEvent]) {
+                        handleCalendarExport(weddingEvents[selectedEvent]);
+                    }
+
+                    form.reset();
                     btn.innerText = originalText;
                     btn.disabled = false;
                     btn.classList.remove('bg-green-800');
-                }, 1000);
+                }, 500);
             })
             .catch(error => {
                 console.error('Lỗi!', error.message);
@@ -76,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Hàm tạo file cho iOS hoặc link cho Android
     function handleCalendarExport(eventData) {
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
