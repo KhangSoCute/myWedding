@@ -64,30 +64,30 @@
     </section>
 
     <section id="rsvp" class="py-24 px-6 bg-[#f7f7f7]">
-        <div class="max-w-xl mx-auto bg-white p-12 shadow-sm text-center">
-            <h2 class="serif text-4xl mb-8 uppercase tracking-widest">RSVP</h2>
-            
-            <form id="weddingForm" name="weddingForm" class="text-left space-y-8">
-                <div>
-                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Tên của bạn</label>
-                    <input type="text" id="name" name="Name" required class="w-full border-b border-gray-200 py-3 focus:outline-none focus:border-black transition text-sm">
-                </div>
-                <div>
-                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Buổi tiệc bạn tham dự</label>
-                    <select id="eventChoice" name="Event" class="w-full border-b border-gray-200 py-3 bg-transparent focus:outline-none focus:border-black transition text-sm">
-                        <option value="Đà Nẵng">Tiệc Vu Quy (Đà Nẵng - 06/06)</option>
-                        <option value="An Giang">Tiệc Tân Hôn (An Giang - 14/06)</option>
-                        <option value="Chưa xác định">Tiệc Báo Hỷ (TP.HCM - Sẽ thông báo sau)</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Lời nhắn</label>
-                    <textarea id="message" name="Message" class="w-full border-b border-gray-200 py-3 focus:outline-none focus:border-black transition text-sm" rows="2"></textarea>
-                </div>
-                <button type="submit" id="submitBtn" class="w-full bg-black text-white py-4 text-[10px] tracking-[0.4em] uppercase hover:opacity-80 transition">Gửi thông tin</button>
-            </form>
-        </div>
-    </section>
+    <div class="max-w-xl mx-auto bg-white p-12 shadow-sm text-center">
+        <h2 class="serif text-4xl mb-8 uppercase tracking-widest">RSVP</h2>
+        
+        <form id="weddingForm" name="weddingForm" class="text-left space-y-8">
+            <div>
+                <label class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Tên của bạn</label>
+                <input type="text" id="name" name="name" required class="w-full border-b border-gray-200 py-3 focus:outline-none focus:border-black transition text-sm">
+            </div>
+            <div>
+                <label class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Buổi tiệc bạn tham dự</label>
+                <select id="eventChoice" name="event" class="w-full border-b border-gray-200 py-3 bg-transparent focus:outline-none focus:border-black transition text-sm">
+                    <option value="Đà Nẵng">Tiệc Vu Quy (Đà Nẵng - 06/06)</option>
+                    <option value="An Giang">Tiệc Tân Hôn (An Giang - 14/06)</option>
+                    <option value="TP.HCM">Tiệc Báo Hỷ (TP.HCM - Sẽ thông báo sau)</option>
+                </select>
+            </div>
+            <div>
+                <label class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Lời nhắn</label>
+                <textarea id="message" name="message" class="w-full border-b border-gray-200 py-3 focus:outline-none focus:border-black transition text-sm" rows="2"></textarea>
+            </div>
+            <button type="submit" id="submitBtn" class="w-full bg-black text-white py-4 text-[10px] tracking-[0.4em] uppercase hover:opacity-80 transition duration-300">Gửi thông tin</button>
+        </form>
+    </div>
+</section>
     
 
     <footer class="py-12 text-center text-[10px] tracking-[0.4em] text-gray-400 uppercase">
