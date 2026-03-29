@@ -5,6 +5,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('weddingForm');
     const btn = form.querySelector('button');
 
+    // Cấu hình thông tin lịch chi tiết theo yêu cầu của Khang
+    const weddingEvents = {
+        "Đà Nẵng": {
+            title: "Lễ Vu Quy - Khang & Vy (Đà Nẵng)",
+            start: "20260606T100000", 
+            end: "20260606T140000",
+            location: "Nhà Hàng Tiệc Cưới Phúc Khang, 139 Trương Chí Cương, Nam Phước, Đà Nẵng",
+            description: "Rất hân hạnh được đón tiếp bạn tại tiệc Vu Quy của chúng mình!"
+        },
+        "An Giang": {
+            title: "Lễ Tân Hôn - Khang & Vy (An Giang)",
+            start: "20260614T100000",
+            end: "20260614T140000",
+            location: "Khách sạn Đông Xuyên, 9A Lương Văn Cù, Long Xuyên, An Giang",
+            description: "Rất hân hạnh được đón tiếp bạn tại tiệc Tân Hôn của chúng mình!"
+        }
+    };
+
     if (form) {
         form.addEventListener('submit', e => {
             e.preventDefault();
@@ -56,5 +74,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 btn.disabled = false;
             });
         });
+    }
+
+    function handleCalendarExport(eventData) {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+        if (isIOS) {
+            const icsContent = [
+                "BEGIN:VCALENDAR",
+                "VERSION:2.0",
+                "PRODID:-//Wedding RSVP//VN",
+                "BEGIN:VEVENT",
+                `DTSTART:${eventData.start}`,
+                `DTEND:${eventData.end}`,
+                `SUMMARY:${eventData.title}`,
+                `LOCATION:${eventData.location}`,
+                `DESCRIPTION:${eventData.description}`,
+                "END:VEVENT",
+                "END:VCALENDAR"
+            ].join("\n");
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.setAttribute('download', 'lich-dam-cuoi.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventData.title)}&dates=${eventData.start}/${eventData.end}&details=${encodeURIComponent(eventData.description)}&location=${encodeURIComponent(eventData.location)}&sf=true&output=xml`;
+            window.open(googleUrl, '_blank');
+        }
     }
 });
